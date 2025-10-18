@@ -34,6 +34,20 @@ Rolldown-Vite(실험적인 Vite 포크 + Rolldown 번들러)를 사용하는 Rea
 진행했던 러닝 훈련을 기록하고 관리할 수 있는 기능을 제공합니다.
 
 
+## 저장소 및 배포
+
+### Git 저장소
+- **GitHub**: https://github.com/KimHunJin/Run-with-Claude.git
+- 초기 커밋 완료 (43개 파일, 5,309줄)
+- 모든 변경사항은 자동으로 원격 저장소에 푸시됨
+
+### 배포 환경
+- **Vercel**: 자동 배포 설정 완료
+- GitHub에 push 시 자동으로 재배포됨
+- `vercel.json` 설정 파일로 빌드 구성 관리
+- 프로덕션 빌드 명령: `npm run build`
+- 출력 디렉토리: `dist/`
+
 ## 개발 명령어
 
 - `npm run dev` - HMR이 포함된 개발 서버 시작
@@ -132,6 +146,14 @@ feature/feature-name/
   - 스크롤 잠금 처리
   - 페이드인/슬라이드업 애니메이션
 
+### 목표 페이스 카드 (`features/goal-pace-calculator/ui/GoalPaceCard`)
+- 8가지 거리별 예상 완주 시간 카드 표시
+- 텍스트 오버플로우 처리 (`overflow: hidden`, `text-overflow: ellipsis`)
+  - 긴 시간 값이 카드 레이아웃을 벗어나지 않도록 방지
+  - 말줄임표(...) 표시로 UI 일관성 유지
+- 반응형 그리드 레이아웃
+- 호버 효과 및 부드러운 전환 애니메이션
+
 ### 타입 정의 (`shared/types/pace.ts`)
 - `PaceData`: 페이스 관련 기본 데이터 구조
 - `PaceLevel`: 훈련 강도 레벨 ('easy' | 'moderate' | 'tempo' | 'threshold' | 'interval' | 'sprint')
@@ -140,6 +162,7 @@ feature/feature-name/
 ## 주요 설정 파일
 
 - `vite.config.ts` - React 플러그인이 포함된 Vite 설정
+- `vercel.json` - Vercel 배포 설정 (빌드 명령, 출력 디렉토리, 프레임워크 설정)
 - `eslint.config.js` - TypeScript, React Hooks, React Refresh 규칙이 포함된 ESLint v9 flat config
 - `tsconfig.json` - app 및 node 설정을 참조하는 복합 TypeScript 설정
 - `tsconfig.app.json` - 애플리케이션 코드를 위한 TypeScript 설정
