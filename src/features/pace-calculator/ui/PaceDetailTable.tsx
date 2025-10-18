@@ -1,4 +1,4 @@
-import { calculateTimeForDistance, formatSeconds, formatTime } from '../../../shared/lib/pace-calculator';
+import { calculateTimeForDistance, formatSeconds, formatTimeHMS } from '../../../shared/lib/pace-calculator';
 import './PaceDetailTable.css';
 
 interface PaceDetailTableProps {
@@ -15,8 +15,26 @@ export function PaceDetailTable({ color }: PaceDetailTableProps) {
     }
   }
 
-  // 100m 단위 거리 (100m ~ 1000m)
-  const distances = Array.from({ length: 10 }, (_, i) => (i + 1) * 100);
+  // 거리 목록 (100m ~ 1000m, 그 이후 3km ~ 풀마라톤)
+  const distances = [
+    // 100m ~ 1000m (100m 단위)
+    ...Array.from({ length: 10 }, (_, i) => ({
+      meters: (i + 1) * 100,
+      label: `${(i + 1) * 100}m`
+    })),
+    // 3km 이후
+    { meters: 3000, label: '3km' },
+    { meters: 5000, label: '5km' },
+    { meters: 10000, label: '10km' },
+    { meters: 15000, label: '15km' },
+    { meters: 20000, label: '20km' },
+    { meters: 21097.5, label: '하프' },
+    { meters: 25000, label: '25km' },
+    { meters: 30000, label: '30km' },
+    { meters: 35000, label: '35km' },
+    { meters: 40000, label: '40km' },
+    { meters: 42195, label: '풀' },
+  ];
 
   return (
     <div className="pace-detail-table-container">
@@ -28,8 +46,8 @@ export function PaceDetailTable({ color }: PaceDetailTableProps) {
                 페이스/거리
               </th>
               {distances.map((distance) => (
-                <th key={distance} style={{ borderColor: color }}>
-                  {distance}m
+                <th key={distance.label} style={{ borderColor: color }}>
+                  {distance.label}
                 </th>
               ))}
             </tr>
@@ -46,12 +64,12 @@ export function PaceDetailTable({ color }: PaceDetailTableProps) {
                     {paceLabel}
                   </td>
                   {distances.map((distance) => {
-                    const timeInSeconds = calculateTimeForDistance(pace, distance);
+                    const timeInSeconds = calculateTimeForDistance(pace, distance.meters);
                     return (
-                      <td key={distance} style={{ borderColor: color }}>
+                      <td key={distance.label} style={{ borderColor: color }}>
                         <div className="time-cell">
                           <span className="time-seconds">{formatSeconds(timeInSeconds)}s</span>
-                          <span className="time-mmss">({formatTime(timeInSeconds)})</span>
+                          <span className="time-mmss">({formatTimeHMS(timeInSeconds)})</span>
                         </div>
                       </td>
                     );
