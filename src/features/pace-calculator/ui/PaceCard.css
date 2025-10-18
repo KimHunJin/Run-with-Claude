@@ -1,0 +1,102 @@
+.pace-card {
+  background: #1a1a1a;
+  border-radius: 12px;
+  border-left: 4px solid;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.pace-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.pace-card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.pace-card-header {
+  margin-bottom: 1.25rem;
+}
+
+.pace-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.pace-card-description {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.pace-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.metric-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.pace-card-footer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2a2a2a;
+  text-align: center;
+}
+
+.click-hint {
+  color: #6b7280;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.click-hint::after {
+  content: '→';
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.pace-card:hover .click-hint::after {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .pace-card {
+    padding: 1.25rem;
+  }
+
+  .pace-card-title {
+    font-size: 1.125rem;
+  }
+
+  .metric-value {
+    font-size: 1rem;
+  }
+
+  .click-hint {
+    font-size: 0.75rem;
+  }
+}

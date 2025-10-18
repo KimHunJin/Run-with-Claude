@@ -1,0 +1,130 @@
+.home-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.home-subtitle {
+  font-size: 1.25rem;
+  color: #9ca3af;
+  margin: 0 0 2rem 0;
+}
+
+.track-info {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.track-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.track-description {
+  color: #d1d5db;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.pace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.home-footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+}
+
+.home-footer p {
+  margin: 0;
+  color: #d1d5db;
+  font-size: 1rem;
+}
+
+.home-footer strong {
+  color: #a78bfa;
+}
+
+.table-tab-content {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.goal-tab-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .table-tab-content {
+    padding: 1rem;
+  }
+  .home-page {
+    padding: 1.5rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-subtitle {
+    font-size: 1rem;
+  }
+
+  .track-info {
+    padding: 1.25rem;
+  }
+
+  .pace-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .home-footer {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 1rem;
+  }
+
+  .home-title {
+    font-size: 1.75rem;
+  }
+
+  .track-description {
+    font-size: 0.9375rem;
+  }
+}

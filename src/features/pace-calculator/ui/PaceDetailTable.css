@@ -1,0 +1,115 @@
+.pace-detail-table-container {
+  width: 100%;
+}
+
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 60vh;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+.pace-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+
+.pace-detail-table th,
+.pace-detail-table td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border: 1px solid #2a2a2a;
+  white-space: nowrap;
+}
+
+.pace-detail-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #1a1a1a;
+}
+
+.pace-detail-table th {
+  font-weight: 600;
+  color: #fff;
+  background-color: #1a1a1a;
+  font-size: 0.875rem;
+}
+
+.pace-detail-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.pace-detail-table td {
+  color: #d1d5db;
+  font-size: 0.875rem;
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background-color: #1a1a1a;
+  font-weight: 600;
+}
+
+.pace-detail-table thead .sticky-col {
+  z-index: 15;
+}
+
+.pace-label {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.time-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.time-seconds {
+  font-weight: 600;
+  color: #fff;
+  font-size: 0.9375rem;
+}
+
+.time-mmss {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.table-hint {
+  margin-top: 1rem;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .table-scroll {
+    max-height: 50vh;
+  }
+
+  .pace-detail-table th,
+  .pace-detail-table td {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .pace-label {
+    font-size: 0.875rem;
+  }
+
+  .time-seconds {
+    font-size: 0.875rem;
+  }
+
+  .time-mmss {
+    font-size: 0.6875rem;
+  }
+}
