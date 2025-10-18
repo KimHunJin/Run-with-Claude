@@ -66,12 +66,18 @@
   color: #fff;
   margin-bottom: 0.25rem;
   font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .race-time-seconds {
   font-size: 0.75rem;
   color: #6b7280;
   font-variant-numeric: tabular-nums;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 1024px) {
