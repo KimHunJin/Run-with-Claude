@@ -6,11 +6,11 @@ interface PaceDetailTableProps {
 }
 
 export function PaceDetailTable({ color }: PaceDetailTableProps) {
-  // 3'00" ~ 7'00" 범위의 페이스 (5초 단위)
+  // 2'00" ~ 7'00" 범위의 페이스 (5초 단위)
   const paces = [];
-  for (let minutes = 3; minutes <= 7; minutes++) {
+  for (let minutes = 2; minutes <= 7; minutes++) {
     for (let seconds = 0; seconds < 60; seconds += 5) {
-      if (minutes === 7 && seconds > 0) break; // 7'00"에서 종료
+      if (minutes === 7 && seconds > 30) break; // 7'30"에서 종료
       paces.push(minutes + seconds / 60);
     }
   }
