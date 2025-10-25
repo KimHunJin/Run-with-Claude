@@ -103,32 +103,32 @@ export function IntervalPaceTable() {
         <table className="interval-pace-table">
           <thead>
             <tr>
-              <th className="sticky-col">거리</th>
-              {paceEntries.map((entry, index) => {
-                const mins = parseInt(entry.minutes) || 0;
-                const secs = parseInt(entry.seconds) || 0;
-                return (
-                  <th key={entry.id}>
+              <th className="sticky-col">페이스</th>
+              {INTERVAL_DISTANCES.map((distance) => (
+                <th key={distance}>{distance}m</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {paceEntries.map((entry, index) => {
+              const mins = parseInt(entry.minutes) || 0;
+              const secs = parseInt(entry.seconds) || 0;
+              return (
+                <tr key={entry.id}>
+                  <td className="sticky-col pace-label">
                     페이스 {index + 1}<br />
                     <span className="pace-value">
                       {mins}'{secs.toString().padStart(2, '0')}"
                     </span>
-                  </th>
-                );
-              })}
-            </tr>
-          </thead>
-          <tbody>
-            {INTERVAL_DISTANCES.map((distance) => (
-              <tr key={distance}>
-                <td className="sticky-col distance-label">{distance}m</td>
-                {paceEntries.map((entry) => (
-                  <td key={entry.id} className="time-cell">
-                    {calculateTime(entry.minutes, entry.seconds, distance)}
                   </td>
-                ))}
-              </tr>
-            ))}
+                  {INTERVAL_DISTANCES.map((distance) => (
+                    <td key={distance} className="time-cell">
+                      {calculateTime(entry.minutes, entry.seconds, distance)}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

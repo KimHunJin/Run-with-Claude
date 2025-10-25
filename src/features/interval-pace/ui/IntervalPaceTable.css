@@ -276,15 +276,15 @@
   z-index: 15;
 }
 
-.distance-label {
+.interval-pace-table .pace-label {
   font-weight: 700;
-  color: #3b82f6;
-  font-size: 0.9375rem;
+  color: #fff;
+  font-size: 0.875rem;
 }
 
 @media (prefers-color-scheme: light) {
-  .distance-label {
-    color: #2563eb;
+  .interval-pace-table .pace-label {
+    color: #1f2937;
   }
 }
 
