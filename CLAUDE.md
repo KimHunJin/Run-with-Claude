@@ -12,7 +12,7 @@ Rolldown-Vite(실험적인 Vite 포크 + Rolldown 번들러)를 사용하는 Rea
 ### 페이지 구조
 
 #### 홈 페이지
-2개의 탭으로 구성된 러닝 페이스 가이드를 제공합니다:
+3개의 탭으로 구성된 러닝 페이스 가이드를 제공합니다:
 
 1. **목표 페이스 계산 탭** (기본 탭)
    - **페이스 직접 입력 모드**: 분:초 형식으로 목표 페이스 입력
@@ -23,12 +23,25 @@ Rolldown-Vite(실험적인 Vite 포크 + Rolldown 번들러)를 사용하는 Rea
    - 시간 표시: HH:MM:SS 또는 MM:SS 형식(메인) + 초 단위(서브)
    - 로컬 스토리지를 통한 입력값 자동 저장 및 복원
    - 페이지 진입 시 저장된 값 또는 기본값으로 자동 계산
+   - 텍스트 오버플로우 처리로 긴 시간 값 표시 최적화
 
 2. **상세 페이스 표 탭**
-   - 3'00" ~ 7'00" 범위의 페이스를 5초 단위로 표시
-   - 100m ~ 1000m (100m 단위) 거리별 소요 시간 표시
-   - 시간 형식: 초 단위(메인) + 분:초 형식(서브)
+   - 2'00" ~ 7'30" 범위의 페이스를 5초 단위로 표시
+   - 다양한 거리별 소요 시간 표시:
+     - 100m ~ 1000m (100m 단위)
+     - 3km, 5km, 10km, 15km, 20km, 하프(21.0975km), 25km, 30km, 35km, 40km, 풀(42.195km)
+   - 시간 형식: 초 단위(메인) + HH:MM:SS 또는 MM:SS 형식(서브)
    - 고정 헤더 및 첫 번째 열로 스크롤 편의성 제공
+   - Light/Dark 테마 자동 지원 (`prefers-color-scheme`)
+
+3. **인터벌 페이스 탭**
+   - 여러 페이스를 동시에 비교할 수 있는 인터벌 훈련 계산기
+   - 페이스 동적 추가/제거 기능 (최소 1개)
+   - 9가지 거리별 시간 표시: 100m, 200m, 300m, 400m, 800m, 1000m, 1200m, 2000m, 3000m
+   - 시간 형식: 초 단위(메인) + HH:MM:SS 또는 MM:SS 형식(서브)
+   - 로컬 스토리지를 통한 페이스 설정 자동 저장
+   - 기본값: 4분/km 페이스 1개
+   - Light/Dark 테마 자동 지원
 
 #### 훈련 일지 (계획됨)
 진행했던 러닝 훈련을 기록하고 관리할 수 있는 기능을 제공합니다.
@@ -84,6 +97,9 @@ src/
     goal-pace-calculator/      - 목표 페이스 계산기 기능
       ui/           - PaceInput, GoalPaceCard 컴포넌트
       model/        - distances (거리 프리셋)
+
+    interval-pace/             - 인터벌 페이스 계산기 기능
+      ui/           - IntervalPaceTable 컴포넌트
 
   shared/           - 공유 레이어
     ui/             - Modal, Tabs 등 재사용 가능한 UI 컴포넌트
@@ -154,6 +170,37 @@ feature/feature-name/
 - 반응형 그리드 레이아웃
 - 호버 효과 및 부드러운 전환 애니메이션
 
+### 인터벌 페이스 계산기 (`features/interval-pace`)
+- 다중 페이스 입력 및 비교 기능
+- 페이스 동적 추가/제거 (최소 1개 유지)
+- 9가지 인터벌 거리 지원 (100m ~ 3000m)
+- 시간 표시: 초 단위(메인) + 분:초 형식(서브)
+- 로컬 스토리지 자동 저장 (키: `intervalPaces`)
+- Light/Dark 테마 자동 지원
+- CSS 네임스페이스 격리 (`.interval-pace-table` 선택자)
+
+### 테마 지원
+- **Light/Dark 테마 자동 전환**: `prefers-color-scheme` 미디어 쿼리 사용
+- 모든 주요 UI 컴포넌트에서 테마 지원:
+  - 상세 페이스 표 (PaceDetailTable)
+  - 인터벌 페이스 계산기 (IntervalPaceTable)
+  - 탭, 모달 등 공통 컴포넌트
+- Light 테마 색상:
+  - 배경: `#f3f4f6`, `#fff`
+  - 텍스트: `#111827`, `#1f2937`, `#4b5563`
+  - 테두리: `#d1d5db`
+- Dark 테마 색상:
+  - 배경: `#1a1a1a`, `#2a2a2a`
+  - 텍스트: `#fff`, `#d1d5db`, `#9ca3af`
+  - 테두리: `#2a2a2a`
+
+### SEO 및 소셜 공유
+- **페이지 타이틀**: "team-jungjin"
+- **메타 디스크립션**: "페이스 별 시간 계산을 도와주는 페이지 입니다."
+- **Open Graph 태그**: 카카오톡, 페이스북 공유 시 표시
+- **Twitter Card 태그**: 트위터 공유 시 표시
+- 모든 메타 태그는 `index.html`에 정의
+
 ### 타입 정의 (`shared/types/pace.ts`)
 - `PaceData`: 페이스 관련 기본 데이터 구조
 - `PaceLevel`: 훈련 강도 레벨 ('easy' | 'moderate' | 'tempo' | 'threshold' | 'interval' | 'sprint')
@@ -161,6 +208,7 @@ feature/feature-name/
 
 ## 주요 설정 파일
 
+- `index.html` - HTML 진입점, 메타 태그 및 소셜 공유 설정
 - `vite.config.ts` - React 플러그인이 포함된 Vite 설정
 - `vercel.json` - Vercel 배포 설정 (빌드 명령, 출력 디렉토리, 프레임워크 설정)
 - `eslint.config.js` - TypeScript, React Hooks, React Refresh 규칙이 포함된 ESLint v9 flat config
@@ -177,3 +225,9 @@ feature/feature-name/
 - **로컬 스토리지 사용**: 사용자 입력값(페이스, 거리, 시간)을 자동으로 저장하고 복원합니다
   - 페이지 새로고침 시에도 입력값 유지
   - 기본값: 페이스 직접 입력 6:00/km, 거리/시간 입력 10km 1:00:00
+  - 인터벌 페이스: 기본값 4:00/km 페이스 1개
+- **테마 시스템**: `prefers-color-scheme` 미디어 쿼리로 Light/Dark 테마 자동 전환
+  - 모든 주요 컴포넌트에 테마 지원 구현
+  - CSS 선택자 네임스페이스로 스타일 충돌 방지
+- **SEO 최적화**: Open Graph 및 Twitter Card 메타 태그로 소셜 공유 최적화
+  - 카카오톡, 페이스북, 트위터 등에서 링크 공유 시 타이틀 및 설명 표시
