@@ -288,14 +288,15 @@
   }
 }
 
-.time-cell {
+.interval-pace-table .time-cell {
+  display: table-cell;
   font-weight: 600;
   color: #fff;
   font-size: 0.9375rem;
 }
 
 @media (prefers-color-scheme: light) {
-  .time-cell {
+  .interval-pace-table .time-cell {
     color: #111827;
   }
 }
