@@ -289,7 +289,9 @@
 }
 
 .interval-pace-table .time-cell {
+  display: table-cell !important;
   padding: 0.75rem 1rem;
+  vertical-align: middle;
 }
 
 .interval-pace-table .time-content {
