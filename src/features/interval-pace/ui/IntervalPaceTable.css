@@ -289,15 +289,32 @@
 }
 
 .interval-pace-table .time-cell {
-  display: table-cell;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.interval-pace-table .time-seconds {
   font-weight: 600;
   color: #fff;
   font-size: 0.9375rem;
 }
 
 @media (prefers-color-scheme: light) {
-  .interval-pace-table .time-cell {
+  .interval-pace-table .time-seconds {
     color: #111827;
+  }
+}
+
+.interval-pace-table .time-mmss {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+@media (prefers-color-scheme: light) {
+  .interval-pace-table .time-mmss {
+    color: #6b7280;
   }
 }
 

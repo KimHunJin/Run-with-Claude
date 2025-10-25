@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { calculateTimeForDistance, formatTimeHMS } from '../../../shared/lib/pace-calculator';
+import { calculateTimeForDistance, formatTimeHMS, formatSeconds } from '../../../shared/lib/pace-calculator';
 import { getLocalStorage, setLocalStorage } from '../../../shared/lib/storage';
 import './IntervalPaceTable.css';
 
@@ -40,12 +40,11 @@ export function IntervalPaceTable() {
     ));
   };
 
-  const calculateTime = (paceMinutes: string, paceSeconds: string, distanceMeters: number) => {
+  const calculateTimeInSeconds = (paceMinutes: string, paceSeconds: string, distanceMeters: number) => {
     const mins = parseInt(paceMinutes) || 0;
     const secs = parseInt(paceSeconds) || 0;
     const pacePerKm = mins + secs / 60;
-    const timeInSeconds = calculateTimeForDistance(pacePerKm, distanceMeters);
-    return formatTimeHMS(timeInSeconds);
+    return calculateTimeForDistance(pacePerKm, distanceMeters);
   };
 
   return (
@@ -122,11 +121,15 @@ export function IntervalPaceTable() {
             {INTERVAL_DISTANCES.map((distance) => (
               <tr key={distance}>
                 <td className="sticky-col distance-label">{distance}m</td>
-                {paceEntries.map((entry) => (
-                  <td key={entry.id} className="time-cell">
-                    {calculateTime(entry.minutes, entry.seconds, distance)}
-                  </td>
-                ))}
+                {paceEntries.map((entry) => {
+                  const timeInSeconds = calculateTimeInSeconds(entry.minutes, entry.seconds, distance);
+                  return (
+                    <td key={entry.id} className="time-cell">
+                      <span className="time-seconds">{formatSeconds(timeInSeconds)}s</span>
+                      <span className="time-mmss">({formatTimeHMS(timeInSeconds)})</span>
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
