@@ -125,8 +125,10 @@ export function IntervalPaceTable() {
                   const timeInSeconds = calculateTimeInSeconds(entry.minutes, entry.seconds, distance);
                   return (
                     <td key={entry.id} className="time-cell">
-                      <span className="time-seconds">{formatSeconds(timeInSeconds)}s</span>
-                      <span className="time-mmss">({formatTimeHMS(timeInSeconds)})</span>
+                      <div className="time-content">
+                        <span className="time-seconds">{formatSeconds(timeInSeconds)}s</span>
+                        <span className="time-mmss">({formatTimeHMS(timeInSeconds)})</span>
+                      </div>
                     </td>
                   );
                 })}
