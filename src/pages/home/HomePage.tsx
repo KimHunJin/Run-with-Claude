@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PaceDetailTable } from '../../features/pace-calculator/ui/PaceDetailTable';
 import { PaceInput, GoalPaceCard } from '../../features/goal-pace-calculator';
+import { IntervalPaceTable } from '../../features/interval-pace';
 import { Tabs, type Tab } from '../../shared/ui';
 import './HomePage.css';
 
@@ -25,6 +26,15 @@ export function HomePage() {
       content: (
         <div className="table-tab-content">
           <PaceDetailTable color="#3b82f6" />
+        </div>
+      ),
+    },
+    {
+      id: 'interval',
+      label: '인터벌 페이스',
+      content: (
+        <div className="interval-tab-content">
+          <IntervalPaceTable />
         </div>
       ),
     },

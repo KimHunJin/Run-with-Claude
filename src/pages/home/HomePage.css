@@ -85,8 +85,23 @@
   margin: 0 auto;
 }
 
+.interval-tab-content {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .interval-tab-content {
+    background: rgba(59, 130, 246, 0.03);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+  }
+}
+
 @media (max-width: 768px) {
-  .table-tab-content {
+  .table-tab-content,
+  .interval-tab-content {
     padding: 1rem;
   }
   .home-page {
